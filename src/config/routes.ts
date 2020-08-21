@@ -1,12 +1,12 @@
 import { Router } from 'express'
-import { getOne, getAll, post, put, deletePessoa } from 'src/useCases/pessoa/pessoaController'
+import * as pessoaController from 'src/useCases/pessoa/pessoaController'
 
 const routes = Router()
 
-routes.get('/api/pessoa', getAll)
-routes.get('/api/pessoa/:id', getOne)
-routes.post('/api/pessoa', post)
-routes.put('/api/pessoa/:id', put)
-routes.delete('/api/pessoa/:nome', deletePessoa)
+routes.get('/api/pessoa', pessoaController.getAllPessoas)
+routes.get('/api/pessoa/:id', pessoaController.getOnePessoa)
+routes.post('/api/pessoa', pessoaController.createPessoa)
+routes.put('/api/pessoa/:id', pessoaController.updatePessoa)
+routes.delete('/api/pessoa/:nome', pessoaController.deletePessoa)
 
 export { routes }

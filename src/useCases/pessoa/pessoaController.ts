@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
 import { Pessoa } from '@entity/pessoa'
 
-function post (req: Request, res: Response): void {
+function createPessoa (req: Request, res: Response): void {
   const pessoaRepository = getRepository(Pessoa)
 
   const pessoa = pessoaRepository.create(req.body)
@@ -11,7 +11,7 @@ function post (req: Request, res: Response): void {
   })
 }
 
-function getAll (req: Request, res: Response): void {
+function getAllPessoas (req: Request, res: Response): void {
   const pessoaRepository = getRepository(Pessoa)
 
   pessoaRepository.find().then(pessoas => {
@@ -19,7 +19,7 @@ function getAll (req: Request, res: Response): void {
   })
 }
 
-function getOne (req: Request, res: Response): void {
+function getOnePessoa (req: Request, res: Response): void {
   const pessoaId = req.params.id
   const pessoaRepository = getRepository(Pessoa)
 
@@ -28,7 +28,7 @@ function getOne (req: Request, res: Response): void {
   })
 }
 
-function put (req: Request, res: Response): void {
+function updatePessoa (req: Request, res: Response): void {
   const pessoaId = req.params.id
   const pessoa = req.body
   const pessoaRepository = getRepository(Pessoa)
@@ -47,4 +47,4 @@ function deletePessoa (req: Request, res: Response): void {
   })
 }
 
-export { getAll, getOne, post, put, deletePessoa }
+export { getAllPessoas, getOnePessoa, createPessoa, updatePessoa, deletePessoa }
